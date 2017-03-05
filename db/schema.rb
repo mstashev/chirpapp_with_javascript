@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20170304182907) do
     t.string   "name"
     t.string   "api_token"
     t.string   "username_email"
-    t.string   "avatar_url",      default: Faker::Fillmurray.image(true)
+    t.string   "avatar_url",      default: "http://fillmurray.com/g/300/300"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.string   "password_digest"

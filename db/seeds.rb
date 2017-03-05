@@ -11,7 +11,7 @@
   name: Faker::LordOfTheRings.character,
   username_email: Faker::Internet.unique.email,
   password: "password",
-  avatar_url: Faker::Fillmurray.image(true)
+  avatar_url: ""
   )
   4.times do
     Post.create(
