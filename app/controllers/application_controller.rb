@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::API
 
   def index
-    binding.pry
+    # binding.pry
     render json: the_class_model.all
   end
 
