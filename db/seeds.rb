@@ -16,7 +16,7 @@
   4.times do
     Message.create(
     body: Faker::ChuckNorris.fact,
-    user: user.id
+    user: user
     )
   end
 end
