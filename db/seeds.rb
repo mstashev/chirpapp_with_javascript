@@ -14,7 +14,7 @@
   avatar_url: ""
   )
   4.times do
-    Post.create(
+    Message.create(
     body: Faker::ChuckNorris.fact,
     user: user.id
     )
