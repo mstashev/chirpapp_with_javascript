@@ -2,7 +2,9 @@ class UsersController < ApplicationController
   before_action :require_user, only: [:follow]
 
   def show
-    @user = User.find_by(api_token: params[:api_token])
+    @user = User.find_by(api_token: params['api_token'])
+    # binding.pry
+
     messages = @user.messages.each do |message|
       {:message => message}
     end
