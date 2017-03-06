@@ -26,9 +26,9 @@ class UsersController < ApplicationController
       # binding.pry
       current_user.toggle_follow!(User.find(params[:user_id]))
       if current_user.follows?(User.find_by(id: params[:user_id]))
-        render json: ["#{current_user.username} is now following #{User.find_by(id: params[:user_id]).username}."]
+        render json: ["#{current_user.username} is now following #{User.find_by(id: params[:user_id]).username_email}."]
       else
-        render json: ["#{current_user.username} has unfollowed #{User.find_by(id: params[:user_id]).username}."]
+        render json: ["#{current_user.username} has unfollowed #{User.find_by(id: params[:user_id]).username_email}."]
       end
     else
       require_user
