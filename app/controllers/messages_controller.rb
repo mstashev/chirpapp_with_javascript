@@ -1,14 +1,17 @@
 class MessagesController < ApplicationController
+  # before_action :require_user, only: [:index]
 
   def index
-    @post = case
-    when params[:user_id] then User.find(params[:user_id]).posts
-    when current_user then Post.timeline(current_user)
-    else Post.order("created_at DESC")
+    binding.pry
+    if current_user
+      @chirp = Message.timeline(current_user)
+    elsif params[:user_id].exists?
+      @chirp = User.find(params[:user_id]).posts
+    else
+      @chirp = Message.order("created_at DESC")
     end
-    render json: @post
+    render json: @chirp
   end
-
 
   def create
     @chirp = Message.new(body: params['body'], user_id: User.find_by(api_token: params['api_token']).id)

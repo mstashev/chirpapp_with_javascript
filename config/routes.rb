@@ -8,11 +8,11 @@ Rails.application.routes.draw do
 
   post '/login'           => 'sessions#create'
   post '/signup'          => 'users#create'
-  post '/timeline'        => 'messages#timeline'
+  get  '/timeline'        => 'messages#index'
   post '/follow/:user_id' => 'users#follow'
   get  '/user_list'       => 'users#index'
   post '/messages_index'  => 'users#show'
-  post '/message'         => 'messages#create' #=> Post a tweet
+  post '/message'         => 'messages#create'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

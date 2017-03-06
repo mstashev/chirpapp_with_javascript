@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :messages
 
   validates :username_email, presence: true, uniqueness: true
+  validates :password, presence: true
   validates :avatar_url, require: false
   validates :avatar_url, format: { with: URI.regexp }, if: 'avatar_url.present?'
 
