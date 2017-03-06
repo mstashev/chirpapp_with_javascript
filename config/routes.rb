@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
   resources :messages
-  resources :users
+  resources :users do
+    resources :messages, only: [:index]
+  end
+
 
   post '/login'           => 'sessions#create'
   post '/signup'          => 'users#create'
