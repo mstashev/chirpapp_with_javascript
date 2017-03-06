@@ -5,7 +5,7 @@ class Message < ApplicationRecord
   validates_format_of :body, with: /\A.{1,160}\z/, on: :create
 
   def self.timeline(user)
-    following_ids = user.followees.pluck(:id)
+    following_ids = user.followees(User).pluck(:id)
     all_ids= following_ids << user.id
     Message.where(user_id: all_ids).order("created_at DESC")
   end
