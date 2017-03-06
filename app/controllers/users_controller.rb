@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(api_token: params['api_token'])
     # binding.pry
-
     messages = @user.messages.each do |message|
       {:message => message}
     end
@@ -23,11 +22,12 @@ class UsersController < ApplicationController
 
   def follow
     if current_user
-      current_user.toggle_follow!(User.find(params[:id]))
+      binding.pry
+      current_user.toggle_follow!(User.find_by(api_token: params['api_token']))
       if current_user.follows?(User.find_by(id: params[:id]))
-        render json: ["#{current_user.username} is now following #{User.find_by(id: params[:id]).username}."]
+        render json: ["#{current_user.username} is now following #{User.find_by(api_token: params[:api_token]).username}."]
       else
-        render json: ["#{current_user.username} has unfollowed #{User.find_by(id: params[:id]).username}."]
+        render json: ["#{current_user.username} has unfollowed #{User.find_by(api_token: params[:api_token]).username}."]
       end
     else
       require_user
